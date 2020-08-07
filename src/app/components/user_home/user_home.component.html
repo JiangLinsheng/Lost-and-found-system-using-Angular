@@ -1,0 +1,37 @@
+<nav class="navbar navbar-default" role="navigation"> 
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+            <span class="sr-only">展开导航</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span> 
+        </button>
+        <a class="navbar-brand" routerLink="/user_home">用户首页</a>
+    </div>
+    <div class="collapse navbar-collapse" id="menu">
+        <ul class="nav navbar-nav">
+            <li><a routerLink="/user_home">全部失物</a></li>
+            <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown">招领状态 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li *ngFor="let item of state"><a>{{item}}</a></li>
+                </ul>
+            </li>
+            <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown">失物类型 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li *ngFor="let item of type"><a>{{item}}</a></li>
+                </ul>
+            </li>
+            <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown">丢失时间 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li *ngFor="let item of time"><a>{{item}}</a></li>
+                </ul>
+            </li>
+            <li><a routerLink="/login">登录</a></li>
+            <li><a routerLink="/user_home">注销</a></li>
+            <li><a routerLink="/register">注册</a></li>
+        </ul>
+    </div>
+    </div>
+</nav>
+<router-outlet></router-outlet>

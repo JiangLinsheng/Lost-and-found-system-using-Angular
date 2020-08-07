@@ -1,0 +1,56 @@
+<nav class="navbar navbar-default" role="navigation"> 
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+            <span class="sr-only">展开导航</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span> 
+        </button>
+        <a class="navbar-brand" routerLink="/adm_home" *ngIf="actor=='admin'">管理员首页</a>
+        <a class="navbar-brand" routerLink="/adm_home" *ngIf="actor=='student'|| userid=='' || userid==null">用户首页</a>
+    </div>
+    <div class="collapse navbar-collapse" id="menu">
+        <ul class="nav navbar-nav">
+            <li *ngIf="actor=='admin'"><a routerLink="/upload">上传失物</a></li>
+            <li><a routerLink="/adm_home">全部失物</a></li>
+            <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown">招领状态 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li *ngFor="let item of state"><a>{{item}}</a></li>
+                </ul>
+            </li>
+            <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown">失物类型 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li *ngFor="let item of type"><a>{{item}}</a></li>
+                </ul>
+            </li>
+            <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown">丢失时间 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li *ngFor="let item of time"><a>{{item}}</a></li>
+                </ul>
+            </li>
+            <li *ngIf="actor=='admin'">
+                <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="失物编号">
+                        </div>
+                        <button type="submit" class="btn btn-default">查询</button>
+                </form>
+            </li>
+            <li *ngIf="actor=='admin'">
+                <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="失主学号">
+                        </div>
+                        <button type="submit" class="btn btn-default">查询</button>
+                </form>
+            </li>
+            <li *ngIf="userid !='' && userid != null"><a>{{username}}</a></li>
+            <li *ngIf="userid==''||userid==null"><a routerLink="/login">登录</a></li>
+            <li *ngIf="userid != null && userid != ''"><a (click)="logout()">注销</a></li>
+            <li><a routerLink="/register">注册</a></li>
+        </ul>
+    </div>
+    </div>
+</nav>
+<router-outlet></router-outlet>

@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="form row">
+          <div class="con col-xs-5 col-sm-5 col-md-5">
+            <img src="./../../../assets/image/{{id}}.jpg" 
+            class="img-responsive" style="height:200px"
+            alt="通用的占位符缩略图">
+          </div>
+          <div class="con col-xs-3 col-sm-3 col-md-3">
+            <label>名称：</label><input [(ngModel)]="thing.title" disabled={{isdisabled}}/><hr/>
+            <label>类型：</label>
+            <select class="form-control required" [(ngModel)]="thing.type" disabled={{isdisabled}} name="type">
+              <option selected>{{thing.type}}</option>
+              <option *ngFor="let item of types" value=item>{{item}}</option>
+            </select>
+            <hr/>
+            <label>发现时间：</label><input [(ngModel)]="thing.time" disabled={{isdisabled}}/>
+          </div>
+          <div class="con col-xs-3 col-sm-3 col-md-3">
+            <label>发现地点：</label><input [(ngModel)]="thing.place" disabled={{isdisabled}}/><hr/>
+            <label>好心人手机号：</label><input [(ngModel)]="thing.phone" disabled={{isdisabled}}/><hr/>
+            <input *ngIf="actor=='student'" type="button" class="btn btn-success" value="申请招领"/>
+            <input *ngIf="actor=='admin'" type="button" class="btn btn-success" value="提交修改"/>
+            <input *ngIf="actor=='admin'" type="button" class="btn btn-success pull-right" value="确认招领"/>
+          </div>
+  </div>
+</div>
